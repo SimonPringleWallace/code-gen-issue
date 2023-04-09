@@ -1,7 +1,15 @@
 import { graphql } from "./common/graphql/types";
 
-graphql(`
+export const CountCharactersFragment = graphql(`
   fragment Count on Characters {
+    info {
+      count
+    }
+  }
+`);
+
+export const CharactersCountFragment = graphql(`
+  fragment CharactersCount on Characters {
     info {
       count
     }
@@ -11,7 +19,7 @@ graphql(`
 export const GET_CHARACTER = graphql(`
   query GetCharacters {
     characters {
-      ...Count
+      ...CharactersCount
     }
   }
 `);
