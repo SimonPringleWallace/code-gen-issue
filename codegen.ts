@@ -1,11 +1,14 @@
-import type { CodegenConfig } from '@graphql-codegen/cli';
+import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  schema: 'https://rickandmortyapi.com/graphql',
-  documents: 'src/**',
+  schema: "https://rickandmortyapi.com/graphql",
+  documents: "src/**",
   generates: {
-    'src/common/graphql/types/': {
-      preset: 'client',
+    "src/common/graphql/types/": {
+      preset: "client",
+      presetConfig: {
+        fragmentMasking: false,
+      },
       plugins: [],
     },
   },

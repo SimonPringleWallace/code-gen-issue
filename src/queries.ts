@@ -1,18 +1,17 @@
-import { gql } from "graphql.macro";
+import { graphql } from "./common/graphql/types";
 
-const COUNT_FRAGMENT = gql`
+graphql(`
   fragment Count on Characters {
     info {
       count
     }
   }
-`;
+`);
 
-export const GET_CHARACTER = gql`
-  ${COUNT_FRAGMENT}
+export const GET_CHARACTER = graphql(`
   query GetCharacters {
     characters {
       ...Count
     }
   }
-`;
+`);

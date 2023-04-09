@@ -201,15 +201,12 @@ export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']>;
 };
 
-export type CountFragment = { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null } | null } & { ' $fragmentName'?: 'CountFragment' };
+export type CountFragment = { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null } | null };
 
 export type GetCharactersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCharactersQuery = { __typename?: 'Query', characters?: (
-    { __typename?: 'Characters' }
-    & { ' $fragmentRefs'?: { 'CountFragment': CountFragment } }
-  ) | null };
+export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null } | null } | null };
 
 export const CountFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Count"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Characters"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"info"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<CountFragment, unknown>;
 export const GetCharactersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCharacters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"characters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Count"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Count"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Characters"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"info"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<GetCharactersQuery, GetCharactersQueryVariables>;
