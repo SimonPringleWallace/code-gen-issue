@@ -9,6 +9,7 @@ import {
 } from "@apollo/client";
 import { GET_CHARACTER, CharactersCountFragment } from "./queries";
 import { FragmentType, useFragment } from "./common/graphql/types";
+import { CharactersCountFragment as CharactersCountFragmentType } from "./common/graphql/types/graphql";
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql",
@@ -20,7 +21,7 @@ type CharactersCountProps = {
 };
 
 const CharactersCount = (props: CharactersCountProps) => {
-  const characters = useFragment(CharactersCountFragment, props.characters);
+  const characters = useFragment<CharactersCountFragmentType>(CharactersCountFragment, props.characters);
 
   return <div>{characters?.info?.count}</div>;
 };
