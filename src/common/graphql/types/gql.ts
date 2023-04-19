@@ -14,7 +14,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  fragment Count on Characters {\n    info {\n      count\n    }\n  }\n": types.CountFragmentDoc,
-    "\n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n": types.GetCharactersDocument,
+    "\n  fragment CharactersCount on Characters {\n    info {\n      count\n    }\n  }\n": types.CharactersCountFragmentDoc,
+    "\n  query GetCharacters {\n    characters {\n      ...CharactersCount\n    }\n  }\n": types.GetCharactersDocument,
 };
 
 /**
@@ -38,7 +39,11 @@ export function graphql(source: "\n  fragment Count on Characters {\n    info {\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n"): (typeof documents)["\n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n"];
+export function graphql(source: "\n  fragment CharactersCount on Characters {\n    info {\n      count\n    }\n  }\n"): (typeof documents)["\n  fragment CharactersCount on Characters {\n    info {\n      count\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetCharacters {\n    characters {\n      ...CharactersCount\n    }\n  }\n"): (typeof documents)["\n  query GetCharacters {\n    characters {\n      ...CharactersCount\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
