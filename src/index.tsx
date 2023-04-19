@@ -1,9 +1,13 @@
 import * as React from "react";
 import { render } from "react-dom";
 
-import { ApolloClient, ApolloProvider, useQuery, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  useQuery,
+  InMemoryCache,
+} from "@apollo/client";
 import { GET_CHARACTER } from "./queries";
-import { GetCharactersQuery } from "./common/graphql/types/graphql";
 
 const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql",
@@ -11,7 +15,7 @@ const client = new ApolloClient({
 });
 
 const ShowPosts = () => {
-  const { loading, error, data } = useQuery<GetCharactersQuery>(GET_CHARACTER);
+  const { loading, error, data } = useQuery(GET_CHARACTER);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -27,4 +31,3 @@ const App = () => (
 
 const rootElement = document.getElementById("root");
 render(<App />, rootElement);
-

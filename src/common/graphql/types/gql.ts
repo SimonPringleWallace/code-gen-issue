@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  fragment Count on Characters {\n    info {\n      count\n    }\n  }\n": types.CountFragmentDoc,
-    "\n  \n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n": types.GetCharactersDocument,
+    "\n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n": types.GetCharactersDocument,
 };
 
 /**
@@ -38,7 +38,7 @@ export function graphql(source: "\n  fragment Count on Characters {\n    info {\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  \n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n"): (typeof documents)["\n  \n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n"];
+export function graphql(source: "\n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n"): (typeof documents)["\n  query GetCharacters {\n    characters {\n      ...Count\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
